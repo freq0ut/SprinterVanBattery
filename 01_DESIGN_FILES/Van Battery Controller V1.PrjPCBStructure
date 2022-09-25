@@ -1,8 +1,8 @@
 Record=TopLevelDocument|FileName=[01] - COVER PAGE.SchDoc|SheetNumber=1
 Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[02] - CONNECTORS.SchDoc|SheetNumber=2
-Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[03] - GIGAVAC.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[03] - VOLTAGE REGULATION.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[04] - FUSE INDICATORS.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[05] - TEMP CONTROL.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[06] - BMS.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[07] - MICROCONTROLLER.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[03] - VOLTAGE REGULATION.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[04] - MICROCONTROLLER.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[05] - BMS.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[06] - FUSES.SchDoc|SheetNumber=6
+Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[07] - GIGAVAC.SchDoc|SheetNumber=7
+Record=NoMainPathDocument|SourceDocument=[01] - COVER PAGE.SchDoc|FileName=[08] - TEMP CONTROL.SchDoc|SheetNumber=8
