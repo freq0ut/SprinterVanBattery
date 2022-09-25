@@ -101,24 +101,24 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document4]
-DocumentPath=[03] - GIGAVAC.SchDoc
+DocumentPath=[03] - VOLTAGE REGULATION.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=5
-DoLibraryUpdate=0
+AnnotateOrder=-1
+DoLibraryUpdate=1
 DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=0
-ClassGenCCAutoRoomEnabled=0
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=FUVSMIGJ
+DocumentUniqueId=
 
 [Document5]
-DocumentPath=[04] - FUSE INDICATORS.SchDoc
+DocumentPath=[04] - MICROCONTROLLER.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -135,7 +135,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document6]
-DocumentPath=[05] - TEMP CONTROL.SchDoc
+DocumentPath=[05] - BMS.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -152,7 +152,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document7]
-DocumentPath=[06] - BMS.SchDoc
+DocumentPath=[06] - FUSES.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -169,7 +169,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document8]
-DocumentPath=[07] - MICROCONTROLLER.SchDoc
+DocumentPath=[07] - GIGAVAC.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -186,6 +186,23 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document9]
+DocumentPath=[08] - TEMP CONTROL.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document10]
 DocumentPath=Van Battery Controller V1_rearranged.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -201,23 +218,6 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QLSGBKHH
-
-[Document10]
-DocumentPath=[03] - VOLTAGE REGULATION.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
 
 [ProjectVariant1]
 UniqueID=1047837D-7C10-485E-A130-3BF82FB0BADC
