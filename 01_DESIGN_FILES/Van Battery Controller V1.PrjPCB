@@ -232,6 +232,10 @@ Variation4=Designator=C17|UniqueId=\NWURDJNQ\ISNJZJNM|Kind=1|AlternatePart=
 Variation5=Designator=R16|UniqueId=\NWURDJNQ\MTSCSGGX|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Van Battery Controller V1\Design Rule Check - Van Battery Controller V1_rearranged.html
+DItemRevisionGUID=
+
 [SearchPath1]
 Path=..\..\..\..\..\..\..\..\..\..\..\..\01_MASTER_LIBRARY\*.*
 IncludeSubFolders=1
