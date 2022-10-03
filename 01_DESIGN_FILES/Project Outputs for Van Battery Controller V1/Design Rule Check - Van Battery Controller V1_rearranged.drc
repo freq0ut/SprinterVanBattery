@@ -1,12 +1,12 @@
 Protel Design System Design Rule Check
 PCB File : C:\github\SprinterVanBattery\01_DESIGN_FILES\Van Battery Controller V1_rearranged.PcbDoc
 Date     : 10/3/2022
-Time     : 10:52:10 AM
+Time     : 11:24:25 AM
 
-Processing Rule : Clearance Constraint (Gap=0.152mm) (All),(All)
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.356mm) ((OnLayer('Int1 (GND)')) OR (OnLayer('Int2 (24V)')) OR (OnLayer('Int3 (24V)')) OR (OnLayer('Int4 (GND)')) OR (OnLayer('Int5 (24V)')) OR (OnLayer('Int6 (GND)'))),(All)
+Processing Rule : Clearance Constraint (Gap=14mil) ((OnLayer('Int1 (GND)')) OR (OnLayer('Int2 (24V)')) OR (OnLayer('Int3 (24V)')) OR (OnLayer('Int4 (GND)')) OR (OnLayer('Int5 (24V)')) OR (OnLayer('Int6 (GND)'))),(All)
 Rule Violations :0
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
@@ -18,34 +18,34 @@ Rule Violations :0
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.102mm) (Max=10.16mm) (Preferred=0.356mm) (All)
+Processing Rule : Width Constraint (Min=4mil) (Max=400mil) (Preferred=14mil) (All)
 Rule Violations :0
 
-Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
 Rule Violations :0
 
-Processing Rule : Hole Size Constraint (Min=0.025mm) (Max=25.4mm) (All)
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=1000mil) (All)
 Rule Violations :0
 
-Processing Rule : Hole To Hole Clearance (Gap=0.152mm) (All),(All)
+Processing Rule : Hole To Hole Clearance (Gap=6mil) (All),(All)
 Rule Violations :0
 
-Processing Rule : Silk To Solder Mask (Clearance=0.025mm) (IsPad),(All)
+Processing Rule : Silk To Solder Mask (Clearance=1mil) (IsPad),(All)
 Rule Violations :0
 
-Processing Rule : Silk to Silk (Clearance=0.102mm) (All),(All)
+Processing Rule : Silk to Silk (Clearance=4mil) (All),(All)
 Rule Violations :0
 
-Processing Rule : Board Clearance Constraint (Gap=0mm) (Not OnSilkscreen)
+Processing Rule : Board Clearance Constraint (Gap=0mil) (Not OnSilkscreen)
 Rule Violations :0
 
-Processing Rule : Matched Lengths(Tolerance=0.127mm) (InNetClass('CSI_2'))
+Processing Rule : Matched Lengths(Tolerance=5mil) (InNetClass('CSI_2'))
 Rule Violations :0
 
-Processing Rule : Matched Lengths(Tolerance=0.127mm) (InNetClass('CSI_1'))
+Processing Rule : Matched Lengths(Tolerance=5mil) (InNetClass('CSI_1'))
 Rule Violations :0
 
-Processing Rule : Height Constraint (Min=0mm) (Max=50.8mm) (Prefered=12.7mm) (All)
+Processing Rule : Height Constraint (Min=0mil) (Max=2000mil) (Prefered=500mil) (All)
 Rule Violations :0
 
 
