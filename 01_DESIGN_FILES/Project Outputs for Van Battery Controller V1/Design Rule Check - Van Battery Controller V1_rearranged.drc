@@ -1,12 +1,17 @@
 Protel Design System Design Rule Check
 PCB File : C:\github\SprinterVanBattery\01_DESIGN_FILES\Van Battery Controller V1_rearranged.PcbDoc
 Date     : 10/3/2022
-Time     : 11:43:11 AM
+Time     : 1:23:23 PM
 
 Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=14mil) ((OnLayer('Int1 (GND)')) OR (OnLayer('Int2 (24V)')) OR (OnLayer('Int3 (24V)')) OR (OnLayer('Int4 (GND)')) OR (OnLayer('Int5 (24V)')) OR (OnLayer('Int6 (GND)'))),(All)
+Processing Rule : Clearance Constraint (Gap=14mil) ((OnLayer('Int1 (GND)')) OR 
+(OnLayer('Int2 (24V)')) OR 
+(OnLayer('Int3 (24V)')) OR 
+(OnLayer('Int4 (GND)')) OR 
+(OnLayer('Int5 (24V)')) OR 
+(OnLayer('Int6 (GND)'))),(All)
 Rule Violations :0
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
