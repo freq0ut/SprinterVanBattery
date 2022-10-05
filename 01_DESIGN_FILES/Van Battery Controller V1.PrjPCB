@@ -224,12 +224,7 @@ UniqueID=1047837D-7C10-485E-A130-3BF82FB0BADC
 Description=ORIGINAL
 AllowFabrication=0
 ParameterCount=0
-VariationCount=5
-Variation1=Designator=R18|UniqueId=\NWURDJNQ\IGYDWQJK|Kind=1|AlternatePart= 
-Variation2=Designator=SW2|UniqueId=\NWURDJNQ\NWMMPDIN\CHGQSHIF|Kind=1|AlternatePart= 
-Variation3=Designator=C33|UniqueId=\NWURDJNQ\NWMMPDIN\KGUZZPWO|Kind=1|AlternatePart= 
-Variation4=Designator=C17|UniqueId=\NWURDJNQ\ISNJZJNM|Kind=1|AlternatePart= 
-Variation5=Designator=R16|UniqueId=\NWURDJNQ\MTSCSGGX|Kind=1|AlternatePart= 
+VariationCount=0
 ParamVariationCount=0
 
 [GeneratedDocument1]
