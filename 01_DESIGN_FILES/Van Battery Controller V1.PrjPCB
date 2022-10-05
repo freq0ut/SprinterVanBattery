@@ -203,7 +203,7 @@ GenerateClassCluster=0
 DocumentUniqueId=DPVFRWPY
 
 [Document10]
-DocumentPath=Van Battery Controller V1_rearranged.PcbDoc
+DocumentPath=Van Battery Controller V1.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -513,7 +513,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Snagit 2021
+TargetPrinter=Brother MFC-L2740DW series
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
