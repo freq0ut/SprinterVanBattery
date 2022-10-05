@@ -12,7 +12,7 @@ SeparateFolders=0
 TemplateLocationPath=
 PinSwapBy_Netlabel=1
 PinSwapBy_Pin=1
-AllowPortNetNames=0
+AllowPortNetNames=1
 AllowSheetEntryNetNames=1
 AppendSheetNumberToLocalNets=0
 NetlistSinglePinNets=0
@@ -32,17 +32,17 @@ ReportSuppressedErrorsInMessages=0
 FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
 IsProjectConflictPreventionWarningsEnabled=1
-IsVirtualBomDocumentRemoved=0
+IsVirtualBomDocumentRemoved=1
 OutputPath=
 LogFolderPath=
 ManagedProjectGUID=
 IncludeDesignInRelease=0
-CrossRefSheetStyle=1
+CrossRefSheetStyle=2
 CrossRefLocationStyle=1
 CrossRefPorts=3
 CrossRefCrossSheets=1
 CrossRefSheetEntries=0
-CrossRefFollowFromMainSettings=1
+CrossRefFollowFromMainSettings=0
 CurrentVariant=ORIGINAL
 
 [Preferences]
@@ -67,14 +67,14 @@ GenerateClassCluster=0
 DocumentUniqueId=SVXETTKB
 
 [Document2]
-DocumentPath=[02] - BLOCK DIAGRAM.SchDoc
+DocumentPath=[02] - CONNECTORS.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
 AnnotateOrder=1
-DoLibraryUpdate=0
+DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=0
 ClassGenCCAutoRoomEnabled=0
@@ -101,7 +101,24 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document4]
-DocumentPath=[03] - POWER.SchDoc
+DocumentPath=[03] - VOLTAGE REGULATION.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=2
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=0
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=PILECFML
+
+[Document5]
+DocumentPath=[04] - MICROCONTROLLER.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -115,10 +132,10 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=IARJCTPP
+DocumentUniqueId=OUIBEAQJ
 
-[Document5]
-DocumentPath=[04] - MICROCONTROLLER.SchDoc
+[Document6]
+DocumentPath=[05] - BMS.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -132,10 +149,10 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=IVRTMWSR
+DocumentUniqueId=XAJCKLZO
 
-[Document6]
-DocumentPath=[05] - HELPFUL INFO.SchDoc
+[Document7]
+DocumentPath=[06] - FUSES.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -149,10 +166,10 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=FUVSMIGJ
+DocumentUniqueId=MNYORXRH
 
-[Document7]
-DocumentPath=[06] - REVISION HISTORY.SchDoc
+[Document8]
+DocumentPath=[07] - GIGAVAC.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -166,9 +183,26 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=DIAKYWAN
+DocumentUniqueId=FUVSMIGJ
 
-[Document8]
+[Document9]
+DocumentPath=[08] - TEMP CONTROL.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=7
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=0
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=DPVFRWPY
+
+[Document10]
 DocumentPath=Van Battery Controller V1.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -190,13 +224,12 @@ UniqueID=1047837D-7C10-485E-A130-3BF82FB0BADC
 Description=ORIGINAL
 AllowFabrication=0
 ParameterCount=0
-VariationCount=5
-Variation1=Designator=R18|UniqueId=\NWURDJNQ\IGYDWQJK|Kind=1|AlternatePart= 
-Variation2=Designator=SW2|UniqueId=\NWURDJNQ\NWMMPDIN\CHGQSHIF|Kind=1|AlternatePart= 
-Variation3=Designator=C33|UniqueId=\NWURDJNQ\NWMMPDIN\KGUZZPWO|Kind=1|AlternatePart= 
-Variation4=Designator=C17|UniqueId=\NWURDJNQ\ISNJZJNM|Kind=1|AlternatePart= 
-Variation5=Designator=R16|UniqueId=\NWURDJNQ\MTSCSGGX|Kind=1|AlternatePart= 
+VariationCount=0
 ParamVariationCount=0
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Van Battery Controller V1\Design Rule Check - Van Battery Controller V1_rearranged.html
+DItemRevisionGUID=
 
 [SearchPath1]
 Path=..\..\..\..\..\..\..\..\..\..\..\..\01_MASTER_LIBRARY\*.*
@@ -926,6 +959,11 @@ OutputName11=Export STEP
 OutputDocumentPath11=
 OutputVariantName11=
 OutputDefault11=0
+OutputType12=Web ReviewOutputName
+OutputName12=Web Review Data
+OutputDocumentPath12=
+OutputVariantName12=
+OutputDefault12=0
 
 [OutputGroup10]
 Name=PostProcess Outputs
@@ -1303,9 +1341,9 @@ UpdateVariants=1
 UpdateToLatestRevision=1
 PartTypes=0
 ComponentLibIdentifierKind0=Library Name And Type
-ComponentLibraryIdentifier0=Microcontrollers.IntLib
-ComponentDesignItemID0=STM32L152CBT6
-ComponentSymbolReference0=STM32L152CBT6
+ComponentLibraryIdentifier0=Connectors.IntLib
+ComponentDesignItemID0=0532580629
+ComponentSymbolReference0=0532580629
 ComponentUpdate0=1
 ComponentIsDeviceSheet0=0
 FullReplace=1
@@ -1323,108 +1361,88 @@ RemoveModels=1
 UpdateCurrentModels=1
 ParameterName0=Category
 ParameterUpdate0=1
-ParameterName1=Comment
+ParameterName1=Color
 ParameterUpdate1=1
-ParameterName2=Component Kind
+ParameterName2=Comment
 ParameterUpdate2=1
-ParameterName3=ComponentLink1Description
+ParameterName3=Component Kind
 ParameterUpdate3=1
-ParameterName4=ComponentLink1URL
+ParameterName4=ComponentLink1Description
 ParameterUpdate4=1
-ParameterName5=ComponentLink2Description
+ParameterName5=ComponentLink1URL
 ParameterUpdate5=1
-ParameterName6=ComponentLink2URL
+ParameterName6=ComponentLink2Description
 ParameterUpdate6=1
-ParameterName7=ComponentLink3Description
+ParameterName7=ComponentLink2URL
 ParameterUpdate7=1
-ParameterName8=ComponentLink3URL
+ParameterName8=Connector Type
 ParameterUpdate8=1
-ParameterName9=Description
+ParameterName9=Contact Material
 ParameterUpdate9=1
-ParameterName10=Height - Seated (Max)
+ParameterName10=Contact Plating
 ParameterUpdate10=1
-ParameterName11=JESD-30 Code
+ParameterName11=Contact Resistance
 ParameterUpdate11=1
-ParameterName12=JESD-609 Code
+ParameterName12=Contact Type
 ParameterUpdate12=1
-ParameterName13=Length
+ParameterName13=Description
 ParameterUpdate13=1
-ParameterName14=Library Reference
+ParameterName14=Fastening Type
 ParameterUpdate14=1
-ParameterName15=Manufacturer
+ParameterName15=Housing Color
 ParameterUpdate15=1
-ParameterName16=Manufacturer Part Number
+ParameterName16=Housing Material
 ParameterUpdate16=1
-ParameterName17=Max Frequency
+ParameterName17=Lead Free
 ParameterUpdate17=1
-ParameterName18=Max Operating Temperature
+ParameterName18=Length
 ParameterUpdate18=1
-ParameterName19=Max Supply Voltage
+ParameterName19=Library Reference
 ParameterUpdate19=1
-ParameterName20=Min Operating Temperature
+ParameterName20=Manufacturer
 ParameterUpdate20=1
-ParameterName21=Min Supply Voltage
+ParameterName21=Manufacturer Part Number
 ParameterUpdate21=1
-ParameterName22=Moisture Sensitivity Level
+ParameterName22=Max Operating Temperature
 ParameterUpdate22=1
-ParameterName23=Number of I/O Lines
+ParameterName23=Max Voltage Rating (AC)
 ParameterUpdate23=1
-ParameterName24=Number of Pins
+ParameterName24=Min Operating Temperature
 ParameterUpdate24=1
-ParameterName25=Package Body Material
+ParameterName25=Mount
 ParameterUpdate25=1
-ParameterName26=Package Code
+ParameterName26=Number of Contacts
 ParameterUpdate26=1
-ParameterName27=Package Equivalence Code
+ParameterName27=Number of Positions
 ParameterUpdate27=1
-ParameterName28=Package Shape
+ParameterName28=Number of Rows
 ParameterUpdate28=1
-ParameterName29=Package Style
+ParameterName29=Orientation
 ParameterUpdate29=1
-ParameterName30=Peak Reflow Temperature (Cel)
+ParameterName30=Packaging
 ParameterUpdate30=1
-ParameterName31=Power Supplies
+ParameterName31=Pitch
 ParameterUpdate31=1
-ParameterName32=Pricing
+ParameterName32=Pricing 1
 ParameterUpdate32=1
-ParameterName33=Qualification Status
+ParameterName33=Radiation Hardening
 ParameterUpdate33=1
-ParameterName34=REACH SVHC
+ParameterName34=RoHS
 ParameterUpdate34=1
-ParameterName35=RoHS
+ParameterName35=Series
 ParameterUpdate35=1
-ParameterName36=RoHS Compliant
+ParameterName36=Stock 1
 ParameterUpdate36=1
-ParameterName37=Speed
+ParameterName37=Supplier 1
 ParameterUpdate37=1
-ParameterName38=Stock
+ParameterName38=Supplier Part Number 1
 ParameterUpdate38=1
-ParameterName39=Supplier 1
+ParameterName39=Termination
 ParameterUpdate39=1
-ParameterName40=Supplier Part Number 1
-ParameterUpdate40=1
-ParameterName41=Supply Voltage-Nom
-ParameterUpdate41=1
-ParameterName42=Surface Mount
-ParameterUpdate42=1
-ParameterName43=Technology
-ParameterUpdate43=1
-ParameterName44=Temperature Grade
-ParameterUpdate44=1
-ParameterName45=Terminal Finish
-ParameterUpdate45=1
-ParameterName46=Terminal Form
-ParameterUpdate46=1
-ParameterName47=Terminal Pitch
-ParameterUpdate47=1
-ParameterName48=Terminal Position
-ParameterUpdate48=1
-ParameterName49=Width
-ParameterUpdate49=1
 ModelTypeGroup0=PCBLIB
 ModelTypeUpdate0=1
 ModelType0=PCBLIB
-ModelName0=QFP48P50_900X900X140L60X22
+ModelName0=MOLEX_532580629
 ModelUpdate0=1
 
 [DatabaseUpdateOptions]

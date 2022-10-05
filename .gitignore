@@ -5,3 +5,4 @@ Library Packages/History/
 Altium System Library.lnk
 *.v2c
 *.bak*
+~$*.xlsx
