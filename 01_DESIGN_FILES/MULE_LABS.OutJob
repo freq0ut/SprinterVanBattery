@@ -21,7 +21,7 @@ TargetOutputMedium=BOM
 VariantName=ORIGINAL
 VariantScope=1
 CurrentConfigurationName=
-TargetPrinter=Snagit 2021
+TargetPrinter=Brother MFC-L2740DW series
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputMedium1=Print Job
 OutputMedium1_Type=Printer
@@ -74,13 +74,15 @@ PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 Configuration2_Name1=ColumnNameFormat
 Configuration2_Item1=CaptionAsName
 Configuration2_Name2=General
-Configuration2_Item2=OpenExported=True|AddToProject=False|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=True|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=C:\Users\Public\Documents\Altium\AD20\Templates\MULE_LABS_BOM_Template.xltx|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=5|FormWidth=2075|FormHeight=887|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=1|UseDirectApi=False|BomSetName=
+Configuration2_Item2=OpenExported=True|AddToProject=False|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=True|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=C:\github\AltiumMasterLibrary\Templates\MULE_LABS_BOM_Template.xltx|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=5|FormWidth=2075|FormHeight=887|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=1|UseDirectApi=False|BomSetName=
 Configuration2_Name3=GroupOrder
 Configuration2_Item3=LibRef=True
 Configuration2_Name4=SortOrder
 Configuration2_Item4=Supplier Subtotal 1=Down
 Configuration2_Name5=VisibleOrder
-Configuration2_Item5=Designator=87|Manufacturer 1=80|Manufacturer Part Number 1=80|Description=87|Supplier 1=80|Supplier Part Number 1=80|Supplier Stock 1=80|Quantity=87|Supplier Unit Price 1=52|Supplier Subtotal 1=91|Supplier Currency 1=35
+Configuration2_Item5=Designator=87|Manufacturer 1=80|Manufacturer Part Number 1=80|Description=87|Supplier 1=80|Supplier Part Number 1=80|Supplier Stock 1=129|Quantity=87|Supplier Unit Price 1=52|Supplier Subtotal 1=91|Supplier Currency 1=35
+Configuration2_Name6=VisibleOrder_Flat
+Configuration2_Item6=Designator=87|Manufacturer 1=80|Manufacturer Part Number 1=80|Description=87|Supplier 1=80|Supplier Part Number 1=80|Supplier Stock 1=129|Quantity=87|Supplier Unit Price 1=52|Supplier Subtotal 1=91|Supplier Currency 1=35
 OutputType3=Gerber
 OutputName3=Gerber Files
 OutputCategory3=Fabrication
@@ -347,7 +349,7 @@ OutputFileNameMulti5=
 UseOutputNameForMulti5=1
 OutputFileNameSpecial5=
 OpenOutput5=0
-OutputFilePath6=C:\Users\zackg\OneDrive\MULE LABS\PROJECTS\0006_01_NITINOL\01_DESIGN_FILES\NITINOL_V02R02\PROJECT OUTPUTS\ASSEMBLY\
+OutputFilePath6=C:\github\SprinterVanBattery\01_DESIGN_FILES\PROJECT OUTPUTS\ASSEMBLY\
 ReleaseManaged6=0
 OutputBasePath6=PROJECT OUTPUTS\
 OutputPathMedia6=ASSEMBLY
@@ -391,7 +393,7 @@ OpenGerberOutput5=0
 OpenNCDrillOutput5=0
 OpenIPCOutput5=0
 EnableReload5=0
-RelativeOutputPath6=C:\Users\zackg\OneDrive\MULE LABS\PROJECTS\0006_01_NITINOL\01_DESIGN_FILES\NITINOL_V02R02\PROJECT OUTPUTS\ASSEMBLY\
+RelativeOutputPath6=C:\github\SprinterVanBattery\01_DESIGN_FILES\PROJECT OUTPUTS\ASSEMBLY\
 OpenOutputs6=1
 AddToProject6=1
 TimestampFolder6=0
