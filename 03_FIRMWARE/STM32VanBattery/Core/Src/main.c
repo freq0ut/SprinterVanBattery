@@ -8,6 +8,7 @@ ADC_HandleTypeDef hadc;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC_Init(void);
+void setup_pin_states(void);
 
 int main(void)
 {
@@ -19,24 +20,7 @@ int main(void)
   uint32_t adc_values[10];
 
   // initialize digital output pin states
-  HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOA, _30A_CKT2_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOA, _30A_CKT3_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOA, _30A_CKT4_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOA, _30A_CKT5_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOA, _30A_CKT6_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, _60A_CKT2_LED_Pin, GPIO_PIN_RESET);
-
-  HAL_GPIO_WritePin(HEATER_EN_GPIO_Port, HEATER_EN_Pin, GPIO_PIN_RESET);
-
-  HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, UV_TO_INV_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, OV_TO_CHGR_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, GV_CLOSE_PULSE_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_RESET);
+  setup_pin_states();
 
   while (1)
     {
@@ -55,7 +39,7 @@ int main(void)
 
       // sample and update ANALOG INPUTS
 
-	  // fuse status
+	  // fuse status (valid range = 2.036V - 2.655V)
 
 	  // thermistors (shunt and isolated PCBA temp)
 
@@ -76,6 +60,28 @@ int main(void)
 	  // disable GV if PCBA thermistor is too high/low
 
     }
+}
+
+void setup_pin_states(void)
+{
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT2_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT3_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT4_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT5_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT6_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, _60A_CKT2_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(HEATER_EN_GPIO_Port, HEATER_EN_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, UV_TO_INV_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, OV_TO_CHGR_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GV_CLOSE_PULSE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_RESET);
 }
 
 /**
