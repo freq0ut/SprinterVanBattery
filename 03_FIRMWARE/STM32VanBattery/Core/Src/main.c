@@ -9,6 +9,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC_Init(void);
 void setup_pin_states(void);
+void LED_blinky(void);
+void testFunc(void);
 
 int main(void)
 {
@@ -17,10 +19,16 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC_Init();
 
-  uint32_t adc_values[10];
+  //uint32_t adc_values[10];
 
   // initialize digital output pin states
   setup_pin_states();
+
+  //blinky on start up
+  LED_blinky();
+
+  //test function
+  testFunc();
 
   while (1)
     {
@@ -29,9 +37,9 @@ int main(void)
 
       // blink heart beat LED to indicate FW 'OK'
       HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_SET);
-      HAL_Delay(50);
+      HAL_Delay(100);
       HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_RESET);
-      HAL_Delay(50);
+      HAL_Delay(100);
 
       // sample and update DIGITAL INPUTS
       HAL_GPIO_ReadPin(GPIOC, UV_INPUT_Pin); // BMS UV
@@ -82,6 +90,73 @@ void setup_pin_states(void)
   HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOB, GV_CLOSE_PULSE_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_RESET);
+}
+
+void LED_blinky(void)
+{
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT2_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT2_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT3_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT3_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT4_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT4_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT5_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT5_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT6_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOA, _30A_CKT6_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOB, _60A_CKT2_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOB, _60A_CKT2_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_SET);
+  HAL_Delay(250);
+  HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(HEATER_EN_GPIO_Port, HEATER_EN_Pin, GPIO_PIN_SET);
+  HAL_Delay(1000);
+  HAL_GPIO_WritePin(HEATER_EN_GPIO_Port, HEATER_EN_Pin, GPIO_PIN_RESET);
+}
+
+void testFunc(void)
+{
+  uint8_t i;
+  for(i=0; i<10; i++)
+  {
+    HAL_GPIO_WritePin(GPIOB, UV_TO_INV_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(3000);
+    HAL_GPIO_WritePin(GPIOB, UV_TO_INV_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+
+
+    HAL_GPIO_WritePin(GPIOB, OV_TO_CHGR_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(3000);
+    HAL_GPIO_WritePin(GPIOB, OV_TO_CHGR_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+  }
 }
 
 /**
