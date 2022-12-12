@@ -159,6 +159,28 @@ void testFunc(void)
   }
 }
 
+void adcScan(void)
+{
+  uint8_t i;
+  averaged_shunt_val_new = 0;
+  averaged_i_set_new = 0;
+  averaged_time_set_new = 0;
+  for(i = 0; i < 100; i++)
+  {
+    averaged_shunt_val_new = averaged_shunt_val_new + adc_values[0];
+    averaged_i_set_new = averaged_i_set_new + adc_values[1];
+    averaged_time_set_new = averaged_time_set_new + adc_values[2];
+  }
+  averaged_shunt_val_new = averaged_shunt_val_new/1000;
+  averaged_i_set_new = averaged_i_set_new/1000;
+  averaged_time_set_new = averaged_time_set_new/1000;
+
+  fShunt_val = ((float)averaged_shunt_val_new/4095*3.3)/0.100;
+  fIset_val = (float)averaged_i_set_new/4095*10;
+  fTimeSet_val = (float)averaged_time_set_new/4095*10;
+
+}
+
 /**
  * @brief System Clock Configuration
  * @retval None
