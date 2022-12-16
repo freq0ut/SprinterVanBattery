@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\github\SprinterVanBattery\01_DESIGN_FILES\24v_to_12v_adapter.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=24v_to_12v_adapter-roundholes.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=24v_to_12v_adapter-slotholes.txt|DrillLayers=gtl,gbl

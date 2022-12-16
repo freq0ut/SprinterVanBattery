@@ -1,0 +1,18 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: 24v_to_12v_adapter.PcbDoc   12/13/2022  2:42:24 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : 24v_to_12v_adapter-RoundHoles.TXT
+ASCII SlotHoles File : 24v_to_12v_adapter-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      39mil (0.991mm)                                           Round             3         PTH        0.20inch (5.08mm)
+T2      39mil (0.991mm)                                           Slot              2         PTH        0.96inch (24.35mm)
+T3      122mil (3.099mm)                                          Round             2         PTH        0.46inch (11.73mm)
+T4      118mil (2.997mm)                                          Round             2         NPTH       0.67inch (17.09mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              9
+
+Total Processing Time (hh:mm:ss) : 00:00:00

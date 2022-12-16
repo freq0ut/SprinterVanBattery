@@ -113,6 +113,7 @@ void Error_Handler(void);
 #define UV_INDICATE_LED_GPIO_Port GPIOB
 #define OV_INDICATE_LED_Pin GPIO_PIN_9
 #define OV_INDICATE_LED_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

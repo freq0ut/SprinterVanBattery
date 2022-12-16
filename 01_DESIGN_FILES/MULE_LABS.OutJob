@@ -17,7 +17,7 @@ RevisionNamingSchemeGUID=
 [OutputGroup1]
 Name=MULE_LABS.OutJob
 Description=
-TargetOutputMedium=BOM
+TargetOutputMedium=GERBERS + NC DRILL
 VariantName=ORIGINAL
 VariantScope=1
 CurrentConfigurationName=
@@ -61,7 +61,7 @@ OutputName2=Bill of Materials
 OutputCategory2=Report
 OutputDocumentPath2=
 OutputVariantName2=ORIGINAL
-OutputEnabled2=1
+OutputEnabled2=0
 OutputEnabled2_OutputMedium1=0
 OutputEnabled2_OutputMedium2=0
 OutputEnabled2_OutputMedium3=0
@@ -86,9 +86,9 @@ Configuration2_Item6=Designator=87|Manufacturer 1=80|Manufacturer Part Number 1=
 OutputType3=Gerber
 OutputName3=Gerber Files
 OutputCategory3=Fabrication
-OutputDocumentPath3=
+OutputDocumentPath3=24v_to_12v_adapter.PcbDoc
 OutputVariantName3=
-OutputEnabled3=0
+OutputEnabled3=1
 OutputEnabled3_OutputMedium1=0
 OutputEnabled3_OutputMedium2=0
 OutputEnabled3_OutputMedium3=0
@@ -98,7 +98,7 @@ OutputEnabled3_OutputMedium6=0
 OutputEnabled3_OutputMedium7=0
 OutputDefault3=0
 Configuration3_Name1=OutputConfigurationParameter1
-Configuration3_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=200000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=True|GenerateDRCRulesFile=True|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Imperial|GerberUnit=Imperial|IncludeUnconnectedMidLayerPads=False|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=40|MinusApertureTolerance=40|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=5|NumberOfDecimals=5|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16973830~1,16973832~1,16973834~1,16777217~1,16777218~1,16777219~1,16777220~1,16777221~1,16777222~1,16777223~1,16842751~1,16973835~1,16973833~1,16973831~1,16908303~1|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=40|PlusApertureTolerance=40|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|DocumentPath=C:\github\SprinterVanBattery\01_DESIGN_FILES\Van Battery Controller V1_rearranged.PcbDoc
+Configuration3_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|BoardID=FXNYTGHQ|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=200000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=False|GenerateDRCRulesFile=False|GenerateReliefShapes=True|GenerateReports=False|GerberUnit=Imperial|GerberUnit=Imperial|IncludeUnconnectedMidLayerPads=False|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=40|MinusApertureTolerance=40|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=3|NumberOfDecimals=3|OptimizeChangeLocationCommands=False|OptimizeChangeLocationCommands=False|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16777217~1,16842751~1,16908300~1|PlotBoardProfile=False|PlotBoardProfileFileName=24v_to_12v_adapter.GM|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=40|PlusApertureTolerance=40|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|UncheckPlotDrillDrawingLayerPair0_Backdrill=False|UncheckPlotDrillDrawingLayerPair0_Checked=False|UncheckPlotDrillDrawingLayerPair0_DrillType=Regular|UncheckPlotDrillDrawingLayerPair0_FileName=24v_to_12v_adapter.GD1|UncheckPlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillDrawingLayerPair0_LowLayer=Top Layer|UncheckPlotDrillGuideLayerPair0_Backdrill=False|UncheckPlotDrillGuideLayerPair0_Checked=False|UncheckPlotDrillGuideLayerPair0_DrillType=Regular|UncheckPlotDrillGuideLayerPair0_FileName=24v_to_12v_adapter.GG1|UncheckPlotDrillGuideLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillGuideLayerPair0_LowLayer=Top Layer|UserLayerName.Caption0=24v_to_12v_adapter.GBO|UserLayerName.Caption1=24v_to_12v_adapter.GTP|UserLayerName.Caption10=24v_to_12v_adapter.GM16|UserLayerName.Caption11=24v_to_12v_adapter.GM1|UserLayerName.Caption12=24v_to_12v_adapter.GBL|UserLayerName.Caption13=24v_to_12v_adapter.GTL|UserLayerName.Caption14=24v_to_12v_adapter.GBP|UserLayerName.Caption2=24v_to_12v_adapter.GTO|UserLayerName.Caption3=24v_to_12v_adapter.GTS|UserLayerName.Caption4=24v_to_12v_adapter.GM12|UserLayerName.Caption5=24v_to_12v_adapter.GM13|UserLayerName.Caption6=24v_to_12v_adapter.GPT|UserLayerName.Caption7=24v_to_12v_adapter.GPB|UserLayerName.Caption8=24v_to_12v_adapter.GKO|UserLayerName.Caption9=24v_to_12v_adapter.GBS|UserLayerName.Count=15|UserLayerName.Layer0=16973831|UserLayerName.Layer1=16973832|UserLayerName.Layer10=16908304|UserLayerName.Layer11=16908289|UserLayerName.Layer12=16842751|UserLayerName.Layer13=16777217|UserLayerName.Layer14=16973833|UserLayerName.Layer2=16973830|UserLayerName.Layer3=16973834|UserLayerName.Layer4=16908300|UserLayerName.Layer5=16908301|UserLayerName.Layer6=16973848|UserLayerName.Layer7=16973849|UserLayerName.Layer8=16973837|UserLayerName.Layer9=16973835|DocumentPath=C:\github\SprinterVanBattery\01_DESIGN_FILES\24v_to_12v_adapter.PcbDoc
 OutputType4=PCB Print
 OutputName4=PCB Prints
 OutputCategory4=Documentation
@@ -198,9 +198,9 @@ PcbPrintPreferences5=
 OutputType6=NC Drill
 OutputName6=NC Drill Files
 OutputCategory6=Fabrication
-OutputDocumentPath6=
+OutputDocumentPath6=24v_to_12v_adapter.PcbDoc
 OutputVariantName6=
-OutputEnabled6=0
+OutputEnabled6=1
 OutputEnabled6_OutputMedium1=0
 OutputEnabled6_OutputMedium2=0
 OutputEnabled6_OutputMedium3=0
@@ -210,7 +210,7 @@ OutputEnabled6_OutputMedium6=0
 OutputEnabled6_OutputMedium7=0
 OutputDefault6=0
 Configuration6_Name1=OutputConfigurationParameter1
-Configuration6_Item1=BoardEdgeRoutToolDia=2000000|GenerateBoardEdgeRout=False|GenerateDrilledSlotsG85=False|GenerateEIADrillFile=False|GenerateSeparatePlatedNonPlatedFiles=False|GenerateSeparateViaTypeFiles=False|NumberOfDecimals=5|NumberOfUnits=2|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Record=DrillView|Units=Imperial|ZeroesMode=SuppressTrailingZeroes|DocumentPath=C:\github\SprinterVanBattery\01_DESIGN_FILES\Van Battery Controller V1_rearranged.PcbDoc
+Configuration6_Item1=BoardEdgeRoutToolDia=2000000|GenerateBoardEdgeRout=False|GenerateDrilledSlotsG85=False|GenerateEIADrillFile=False|GenerateSeparatePlatedNonPlatedFiles=False|GenerateSeparateViaTypeFiles=False|GenerateToolsByDrillSymbols=False|NumberOfDecimals=3|NumberOfUnits=2|OptimizeChangeLocationCommands=False|OriginPosition=Relative|Record=DrillView|Units=Imperial|ZeroesMode=SuppressLeadingZeroes|DocumentPath=C:\github\SprinterVanBattery\01_DESIGN_FILES\24v_to_12v_adapter.PcbDoc
 OutputType7=Assembly
 OutputName7=Assembly Drawings
 OutputCategory7=Assembly

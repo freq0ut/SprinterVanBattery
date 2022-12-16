@@ -3,11 +3,16 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc;
+DMA_HandleTypeDef hdma_adc;
+
+TIM_HandleTypeDef htim2;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_ADC_Init(void);
+static void MX_TIM2_Init(void);
 void setup_pin_states(void);
 void LED_blinky(void);
 void testFunc(void);
@@ -17,57 +22,92 @@ int main(void)
   HAL_Init();
   SystemClock_Config();
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC_Init();
+  MX_TIM2_Init();
 
-  //uint32_t adc_values[10];
+  uint32_t adc_values[10];
+  uint32_t openCktThreshold = 2100; // 2200 corresponds to 20V
+  HAL_ADC_Start_DMA(&hadc, (uint32_t *)adc_values, 10);
+  HAL_TIM_Base_Start(&htim2);
 
-  // initialize digital output pin states
-  setup_pin_states();
+  setup_pin_states(); // initialize digital output pin states
+  LED_blinky(); //blinky on start up
+  // testFunc(); //test function
 
-  //blinky on start up
-  LED_blinky();
-
-  //test function
-  testFunc();
+//  HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_SET);
+//  HAL_Delay(500);
+//  HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_RESET);
 
   while (1)
+  {
+    asm("nop"); // no-op for break point
+
+    // blink heart beat LED to indicate FW 'OK'
+    HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(100);
+
+    if(HAL_GPIO_ReadPin(GPIOC, UV_INPUT_Pin) == GPIO_PIN_SET)
     {
-      // no-op for break point
-      asm("nop");
-
-      // blink heart beat LED to indicate FW 'OK'
-      HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_SET);
-      HAL_Delay(100);
-      HAL_GPIO_WritePin(GPIOB, DEBUG_LED_Pin, GPIO_PIN_RESET);
-      HAL_Delay(100);
-
-      // sample and update DIGITAL INPUTS
-      HAL_GPIO_ReadPin(GPIOC, UV_INPUT_Pin); // BMS UV
-      HAL_GPIO_ReadPin(GPIOC, OV_INPUT_Pin); // BMS OV
-
-      // sample and update ANALOG INPUTS
-
-	  // fuse status (valid range = 2.036V - 2.655V)
-
-	  // thermistors (shunt and isolated PCBA temp)
-
-      // update DIGITAL OUTPUTS
-
-	  // UV: LED and optoiso
-
-	  // OV: LED and optoiso
-
-	  // Fuse status LEDs
-
-	  // Heater LED
-
-	  // Heater ENABLE (check PCBA thermistor temperatures)
-
-	  // disable GV if SHUNT thermistor is too high/low
-
-	  // disable GV if PCBA thermistor is too high/low
-
+//      HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_SET);
+//      HAL_Delay(500);
+//      HAL_GPIO_WritePin(GPIOB, GV_OPEN_PULSE_Pin, GPIO_PIN_RESET);
+      HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_SET);
     }
+    else
+      HAL_GPIO_WritePin(GPIOB, UV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+
+    if(HAL_GPIO_ReadPin(GPIOC, OV_INPUT_Pin) == GPIO_PIN_SET)
+    {
+      HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_SET);
+    }
+    else
+      HAL_GPIO_WritePin(GPIOB, OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+
+    // sample and update ANALOG INPUTS
+    // fuse status (valid range = 2.036V - 2.655V)
+    if (adc_values[0] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT6_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT6_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[1] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT5_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT5_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[2] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT4_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT4_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[3] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT3_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT3_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[4] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT2_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT2_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[5] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[6] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOB, _60A_CKT2_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOB, _60A_CKT2_LED_Pin, GPIO_PIN_SET);
+
+    if (adc_values[7] > openCktThreshold)
+      HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin, GPIO_PIN_RESET);
+    else
+      HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin, GPIO_PIN_SET);
+  }
 }
 
 void setup_pin_states(void)
@@ -159,74 +199,55 @@ void testFunc(void)
   }
 }
 
-void adcScan(void)
-{
-  uint8_t i;
-  averaged_shunt_val_new = 0;
-  averaged_i_set_new = 0;
-  averaged_time_set_new = 0;
-  for(i = 0; i < 100; i++)
-  {
-    averaged_shunt_val_new = averaged_shunt_val_new + adc_values[0];
-    averaged_i_set_new = averaged_i_set_new + adc_values[1];
-    averaged_time_set_new = averaged_time_set_new + adc_values[2];
-  }
-  averaged_shunt_val_new = averaged_shunt_val_new/1000;
-  averaged_i_set_new = averaged_i_set_new/1000;
-  averaged_time_set_new = averaged_time_set_new/1000;
-
-  fShunt_val = ((float)averaged_shunt_val_new/4095*3.3)/0.100;
-  fIset_val = (float)averaged_i_set_new/4095*10;
-  fTimeSet_val = (float)averaged_time_set_new/4095*10;
-
-}
-
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-   */
+  */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL3;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV3;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-    {
-      Error_Handler();
-    }
+  {
+    Error_Handler();
+  }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
+  */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-      |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSE;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV16;
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
-    {
-      Error_Handler();
-    }
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /**
- * @brief ADC Initialization Function
- * @param None
- * @retval None
- */
+  * @brief ADC Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_ADC_Init(void)
 {
 
@@ -241,36 +262,117 @@ static void MX_ADC_Init(void)
   /* USER CODE END ADC_Init 1 */
 
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
-   */
+  */
   hadc.Instance = ADC1;
   hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
   hadc.Init.Resolution = ADC_RESOLUTION_12B;
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc.Init.ScanConvMode = ADC_SCAN_DISABLE;
+  hadc.Init.ScanConvMode = ADC_SCAN_ENABLE;
   hadc.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc.Init.LowPowerAutoWait = ADC_AUTOWAIT_DISABLE;
   hadc.Init.LowPowerAutoPowerOff = ADC_AUTOPOWEROFF_DISABLE;
   hadc.Init.ChannelsBank = ADC_CHANNELS_BANK_A;
   hadc.Init.ContinuousConvMode = DISABLE;
-  hadc.Init.NbrOfConversion = 1;
+  hadc.Init.NbrOfConversion = 10;
   hadc.Init.DiscontinuousConvMode = DISABLE;
-  hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc.Init.DMAContinuousRequests = DISABLE;
+  hadc.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T2_TRGO;
+  hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+  hadc.Init.DMAContinuousRequests = ENABLE;
   if (HAL_ADC_Init(&hadc) != HAL_OK)
-    {
-      Error_Handler();
-    }
+  {
+    Error_Handler();
+  }
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-   */
+  */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_4CYCLES;
+  sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
-    {
-      Error_Handler();
-    }
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Rank = ADC_REGULAR_RANK_3;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_3;
+  sConfig.Rank = ADC_REGULAR_RANK_4;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Rank = ADC_REGULAR_RANK_5;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_5;
+  sConfig.Rank = ADC_REGULAR_RANK_6;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Rank = ADC_REGULAR_RANK_7;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_7;
+  sConfig.Rank = ADC_REGULAR_RANK_8;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_20;
+  sConfig.Rank = ADC_REGULAR_RANK_9;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_21;
+  sConfig.Rank = ADC_REGULAR_RANK_10;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN ADC_Init 2 */
 
   /* USER CODE END ADC_Init 2 */
@@ -278,10 +380,84 @@ static void MX_ADC_Init(void)
 }
 
 /**
- * @brief GPIO Initialization Function
- * @param None
- * @retval None
- */
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 33600-1;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 714-1;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -297,12 +473,12 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, _60A_CKT1_LED_Pin|_60A_CKT2_LED_Pin|UV_TO_INV_Pin|OV_TO_CHGR_Pin
-		    |GV_CLOSE_PULSE_Pin|GV_OPEN_PULSE_Pin|DEBUG_LED_Pin|UV_INDICATE_LED_Pin
-		    |OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
+                          |GV_CLOSE_PULSE_Pin|GV_OPEN_PULSE_Pin|DEBUG_LED_Pin|UV_INDICATE_LED_Pin
+                          |OV_INDICATE_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, _30A_CKT1_LED_Pin|_30A_CKT2_LED_Pin|_30A_CKT3_LED_Pin|_30A_CKT4_LED_Pin
-		    |_30A_CKT5_LED_Pin|_30A_CKT6_LED_Pin, GPIO_PIN_RESET);
+                          |_30A_CKT5_LED_Pin|_30A_CKT6_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : HEATER_EN_Pin */
   GPIO_InitStruct.Pin = HEATER_EN_Pin;
@@ -321,8 +497,8 @@ static void MX_GPIO_Init(void)
                            GV_CLOSE_PULSE_Pin GV_OPEN_PULSE_Pin DEBUG_LED_Pin UV_INDICATE_LED_Pin
                            OV_INDICATE_LED_Pin */
   GPIO_InitStruct.Pin = _60A_CKT1_LED_Pin|_60A_CKT2_LED_Pin|UV_TO_INV_Pin|OV_TO_CHGR_Pin
-      |GV_CLOSE_PULSE_Pin|GV_OPEN_PULSE_Pin|DEBUG_LED_Pin|UV_INDICATE_LED_Pin
-      |OV_INDICATE_LED_Pin;
+                          |GV_CLOSE_PULSE_Pin|GV_OPEN_PULSE_Pin|DEBUG_LED_Pin|UV_INDICATE_LED_Pin
+                          |OV_INDICATE_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -331,7 +507,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : _30A_CKT1_LED_Pin _30A_CKT2_LED_Pin _30A_CKT3_LED_Pin _30A_CKT4_LED_Pin
                            _30A_CKT5_LED_Pin _30A_CKT6_LED_Pin */
   GPIO_InitStruct.Pin = _30A_CKT1_LED_Pin|_30A_CKT2_LED_Pin|_30A_CKT3_LED_Pin|_30A_CKT4_LED_Pin
-      |_30A_CKT5_LED_Pin|_30A_CKT6_LED_Pin;
+                          |_30A_CKT5_LED_Pin|_30A_CKT6_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -344,9 +520,9 @@ static void MX_GPIO_Init(void)
 /* USER CODE END 4 */
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -360,12 +536,12 @@ void Error_Handler(void)
 
 #ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
